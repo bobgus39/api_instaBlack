@@ -6,7 +6,7 @@ const loginUserSchema = require('../../schemas/users/loginUserSchema');
 
 const { missingFieldsError } = require('../../services/errorService');
 const { invalidCredentialsError } = require('../../services/errorService');
-let connection;
+
 const loginUser = async (req, res, next) => {
     try {
         const { email, password } = req.body;
@@ -25,6 +25,7 @@ const loginUser = async (req, res, next) => {
         }
         const tokenInfo = {
             id: user.id,
+            username: user.username,
         };
 
         //Creamos el token
@@ -36,6 +37,7 @@ const loginUser = async (req, res, next) => {
             status: 'ok',
             data: {
                 token,
+                tokenInfo,
             },
         });
     } catch (err) {

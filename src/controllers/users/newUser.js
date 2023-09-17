@@ -14,6 +14,7 @@ const newUser = async (req, res, next) => {
         res.status(201).send({
             status: 'created',
             message: 'Usuario creado',
+            username: username,
         });
     } catch (err) {
         next(err);

@@ -24,7 +24,7 @@ const getDb = async () => {
                 password: MYSQL_PASS,
                 port: MYSQL_PORT,
                 database: MYSQL_DB,
-                timezone: 'Z',
+                timezone: 'local',
             });
         }
 

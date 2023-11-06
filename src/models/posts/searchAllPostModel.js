@@ -15,6 +15,7 @@ const searchAllPostModel = async (keyword = '', userId = '') => {
                 P.description,
                 P.photo,
                 U.username,
+                U.avatar,
                 Bit_OR(L.userId = ?) AS likedByMe,
                 P.userId,
                 P.userId = ? AS owner,
@@ -41,10 +42,6 @@ const searchAllPostModel = async (keyword = '', userId = '') => {
         for (const post of posts) {
             post.likedByMe = Boolean(post.likedByMe);
             post.owner = Boolean(post.owner);
-            console.log(`Post ID: ${post.id}`);
-            console.log(`Description: ${post.description}`);
-            console.log(`Liked by Me: ${post.likedByMe}`);
-            console.log(`Liked Usernames: ${post.likedUsernames}`);
         }
         return posts;
     } finally {
